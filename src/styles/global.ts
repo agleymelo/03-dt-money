@@ -12,6 +12,16 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 2px ${(props) => props.theme["green-500"]};
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
   
   body {
     background: ${(props) => props.theme["gray-800"]};
