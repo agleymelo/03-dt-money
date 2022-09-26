@@ -15,6 +15,14 @@
       "category": "alimentacao",
       "price": 60,
       "createdAt": "2020-08-21T19:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "description": "Ignite Rocketsesat",
+      "type": "outcome",
+      "category": "Educacao",
+      "price": 1980,
+      "createdAt": "2020-08-24T19:00:00.000Z"
     }
   ]
 }
