@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import * as Dialog from "@radix-ui/react-dialog"
@@ -19,7 +19,7 @@ const newTransactionFormSchema = Z.object({
   description: Z.string(),
   price: Z.number(),
   category: Z.string(),
-  // type: Z.enum(["income", "outcome"]),
+  type: Z.enum(["income", "outcome"]),
 })
 
 type NewTransactionFormInputs = Z.infer<typeof newTransactionFormSchema>
@@ -28,9 +28,13 @@ export function NewTransactionsModal() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { isSubmitting },
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: {
+      type: "income",
+    },
   })
 
   function handleCreateNewTransaction(data: NewTransactionFormInputs) {
@@ -68,16 +72,27 @@ export function NewTransactionsModal() {
             {...register("category")}
           />
 
-          <TransactionType>
-            <TransactionTypeButton variant="income" value="income">
-              <ArrowCircleUp size={24} />
-              Income
-            </TransactionTypeButton>
-            <TransactionTypeButton variant="outcome" value="outcome">
-              <ArrowCircleDown size={24} />
-              Outcome
-            </TransactionTypeButton>
-          </TransactionType>
+          <Controller
+            control={control}
+            name="type"
+            render={({ field }) => {
+              return (
+                <TransactionType
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <TransactionTypeButton variant="income" value="income">
+                    <ArrowCircleUp size={24} />
+                    Income
+                  </TransactionTypeButton>
+                  <TransactionTypeButton variant="outcome" value="outcome">
+                    <ArrowCircleDown size={24} />
+                    Outcome
+                  </TransactionTypeButton>
+                </TransactionType>
+              )
+            }}
+          />
 
           <button type="submit" disabled={isSubmitting}>
             Register
