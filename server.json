@@ -23,6 +23,30 @@
       "category": "Educacao",
       "price": 1980,
       "createdAt": "2020-08-24T19:00:00.000Z"
+    },
+    {
+      "description": "Desenvolvimento de APP",
+      "category": "Venda",
+      "price": 100000,
+      "type": "income",
+      "createdAt": "2022-09-28T16:14:33.707Z",
+      "id": 4
+    },
+    {
+      "description": "Desenvolvimento de App",
+      "category": "Venda",
+      "price": 112321321,
+      "type": "income",
+      "createdAt": "2022-09-28T16:16:46.705Z",
+      "id": 5
+    },
+    {
+      "description": "Comi um pastel",
+      "category": "Alimentacao",
+      "price": 100,
+      "type": "outcome",
+      "createdAt": "2022-10-02T12:43:50.297Z",
+      "id": 6
     }
   ]
 }
