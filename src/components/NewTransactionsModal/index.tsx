@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import { Controller, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { useContext } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import * as Dialog from "@radix-ui/react-dialog"
-import * as Z from "zod"
+import * as Dialog from '@radix-ui/react-dialog'
+import * as Z from 'zod'
 
-import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react"
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 
-import { TransactionsContext } from "../../contexts/TransactionsContext"
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 import {
   CloseButton,
@@ -15,13 +15,13 @@ import {
   Overlay,
   TransactionType,
   TransactionTypeButton,
-} from "./styles"
+} from './styles'
 
 const newTransactionFormSchema = Z.object({
   description: Z.string(),
   price: Z.number(),
   category: Z.string(),
-  type: Z.enum(["income", "outcome"]),
+  type: Z.enum(['income', 'outcome']),
 })
 
 type NewTransactionFormInputs = Z.infer<typeof newTransactionFormSchema>
@@ -36,7 +36,7 @@ export function NewTransactionsModal() {
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
-      type: "income",
+      type: 'income',
     },
   })
 
@@ -71,19 +71,19 @@ export function NewTransactionsModal() {
             type="text"
             placeholder="Description"
             required
-            {...register("description")}
+            {...register('description')}
           />
           <input
             type="number"
             placeholder="Price"
             required
-            {...register("price", { valueAsNumber: true })}
+            {...register('price', { valueAsNumber: true })}
           />
           <input
             type="text"
             placeholder="Category"
             required
-            {...register("category")}
+            {...register('category')}
           />
 
           <Controller
